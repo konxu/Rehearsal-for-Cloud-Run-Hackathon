@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rehearsal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0"
+  }
+}
+</script>
+    <style>
+      html, body, #root {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      @keyframes pulse-glow {
+        0%, 100% {
+          transform: scale(1);
+          box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+        }
+      }
+
+      .pulse-glow-button {
+        animation: pulse-glow 2s infinite ease-in-out;
+      }
+      
+      @keyframes popup {
+        0% {
+          opacity: 0;
+          transform: scale(0.7) translateY(10px);
+        }
+        80% {
+          opacity: 1;
+          transform: scale(1.05) translateY(0);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      /* --- Static Pegman Hint Styles --- */
+      .static-pegman-hint {
+        position: absolute;
+        bottom: 40px; /* Aligned vertically with Pegman */
+        right: 80px;  /* Positioned to the left of Pegman */
+        z-index: 20;
+        padding: 12px;
+        background-color: #2563EB; /* Blue background */
+        color: white; /* White text */
+        font-weight: bold;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        text-align: center;
+        pointer-events: none; /* Can't be clicked itself */
+        width: 200px;
+        opacity: 0;
+        transform-origin: bottom right; /* Animate from the corner closest to pegman */
+      }
+
+      .static-pegman-hint::after { /* Arrow pointing to the right */
+        content: '';
+        position: absolute;
+        top: 70%; /* Moved down to align better */
+        right: -8px;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-left: 8px solid #2563EB; /* Arrow color matches new background */
+      }
+      
+      .static-pegman-hint.visible {
+        /* More pronounced animation with a longer duration */
+        animation: popup 0.5s ease-out forwards;
+      }
+
+      .static-pegman-hint.hidden {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+    </style>
+</head>
+  <body class="bg-gray-900 text-white">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
