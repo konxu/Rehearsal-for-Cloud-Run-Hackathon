@@ -2,7 +2,7 @@
 <img width="900" height="600" alt="GHBanner" src="/3.png" />
 </div>
 
-# Run and deploy your AI Studio app
+# Rehearsal — Practice for the real world
 
 No setup needed! Check out the app in AI Studio:
 https://ai.studio/apps/drive/15jaq3BOtqgpAOcydFIbdhyxrm4WynNsu
